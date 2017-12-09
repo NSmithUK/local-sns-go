@@ -20,7 +20,7 @@ func Run() {
 
 	app.Controller("/", new(RootController))
 
-	app.Run(iris.Addr(":8080"), iris.WithoutVersionChecker, iris.WithConfiguration(iris.Configuration{ // default configuration:
+	app.Run(iris.Addr(":8181"), iris.WithoutVersionChecker, iris.WithConfiguration(iris.Configuration{ // default configuration:
 		DisableInterruptHandler:           true,
 	}))
 }
