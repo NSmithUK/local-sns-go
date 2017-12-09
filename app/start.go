@@ -1,15 +1,23 @@
 package app
 
 import (
-	"encoding/xml"
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/middleware/logger"
 	"github.com/kataras/iris/middleware/recover"
 	"github.com/kataras/iris/mvc"
 	"fmt"
+	"os"
 )
 
 func Run() {
+
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		port = "8080"
+	}
+
+	//---
 
 	app := iris.New()
 
@@ -20,7 +28,7 @@ func Run() {
 
 	app.Controller("/", new(RootController))
 
-	app.Run(iris.Addr(":8181"), iris.WithoutVersionChecker, iris.WithConfiguration(iris.Configuration{ // default configuration:
+	app.Run(iris.Addr(":" + port), iris.WithoutVersionChecker, iris.WithConfiguration(iris.Configuration{ // default configuration:
 		DisableInterruptHandler:           true,
 	}))
 }
@@ -52,12 +60,6 @@ func (c *RootController) Post() int {
 	c.Ctx.Application().Logger().Info(message)
 
 	//---
-
-	type ExampleXML struct {
-		XMLName xml.Name `xml:"example"`
-		One     string   `xml:"one,attr"`
-		Two     string   `xml:"two,attr"`
-	}
 
 	return 200
 }
