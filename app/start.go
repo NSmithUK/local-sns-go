@@ -14,7 +14,7 @@ func Run() {
 	port := os.Getenv("PORT")
 
 	if port == "" {
-		port = "8080"
+		port = "8181"
 	}
 
 	//---
@@ -29,7 +29,7 @@ func Run() {
 	app.Controller("/", new(RootController))
 
 	app.Run(iris.Addr(":" + port), iris.WithoutVersionChecker, iris.WithConfiguration(iris.Configuration{ // default configuration:
-		DisableInterruptHandler:           true,
+		DisableInterruptHandler: true,
 	}))
 }
 
