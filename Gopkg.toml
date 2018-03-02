@@ -25,8 +25,8 @@
   version = "^1.12.27"
 
 [[constraint]]
-  name = "github.com/kataras/iris"
-  version = "^8.5.0"
+  name = "github.com/gin-gonic/gin"
+  version = "^1.2.0"
 
 [metadata.heroku]
   root-package = "github.com/NSmithUK/local-sns-go"
